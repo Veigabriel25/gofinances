@@ -13,7 +13,8 @@ import {
   ParamListBase,
 } from '@react-navigation/native';
 
-import { Input } from '../../components/Form/Input';
+import { useAuth } from '../../hooks/auth';
+
 import { Button } from '../../components/Form/Button';
 import { CategorySelectButton } from '../../components/Form/CategorySelectButton';
 import { TransactionTypeButton } from '../../components/Form/TransactionTypeButton';
@@ -49,7 +50,9 @@ export function Register() {
     name: 'Categoria',
   });
 
-  const dataKey = '@gofinances:transactions';
+  const { user } = useAuth();
+
+  const dataKey = `@gofinances:transactions_user:${user.id}`;
 
   const {
     control,
@@ -160,7 +163,7 @@ export function Register() {
           <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
         </Form>
 
-        <Modal visible={categoryModalOpen}>
+        <Modal visible={categoryModalOpen} animationType="slide">
           <CategorySelect
             category={category}
             setCategory={setCategory}

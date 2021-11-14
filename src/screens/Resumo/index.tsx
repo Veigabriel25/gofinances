@@ -28,6 +28,7 @@ import {
   LoadContainer,
 } from './styles';
 import { HistoryCard } from '../../components/HistoryCard';
+import { useAuth } from '../../hooks/auth';
 
 interface TransactionData {
   type: 'positive' | 'negative';
@@ -53,7 +54,9 @@ export function Resume() {
 
   const theme = useTheme();
 
-  const dataKey = '@gofinances:transactions';
+  const { user } = useAuth();
+
+  const dataKey = `@gofinances:transactions_user:${user.id}`;
 
   useFocusEffect(
     useCallback(() => {
