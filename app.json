@@ -4,7 +4,12 @@
     "slug": "gofinances",
     "scheme": "gofinances",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.veigabriel.gofinances"
+    }
   },
   "name": "gofinances"
 }
